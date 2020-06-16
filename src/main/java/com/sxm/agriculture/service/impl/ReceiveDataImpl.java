@@ -1,6 +1,7 @@
 package com.sxm.agriculture.service.impl;
 
 import com.sxm.agriculture.entity.Alldata;
+import com.sxm.agriculture.mapper.Soil1Mapper;
 import com.sxm.agriculture.service.ReceiveDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,9 +15,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ReceiveDataImpl implements ReceiveDataService {
+
+    @Autowired(required = false)
+    Soil1Mapper soil1Mapper;
+
     @Override
     public void receiveData(Alldata alldata) {
         int monitor = alldata.getMonitor();
         System.out.println(monitor);
+        soil1Mapper.insertSoil(alldata.getSoil());
     }
 }
