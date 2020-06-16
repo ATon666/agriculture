@@ -1,10 +1,16 @@
 package com.sxm.agriculture.controller;
 
 import com.sxm.agriculture.entity.Alldata;
+import com.sxm.agriculture.service.ReceiveDataService;
+import com.sxm.agriculture.service.impl.ReceiveDataImpl;
+import jdk.nashorn.internal.ir.annotations.Reference;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
 
 /**
  * @author 780013490@qq.com  孙小明
@@ -15,10 +21,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class ReceiveDataController {
 
+
+    private ReceiveDataService receiveDataService;
+
+    @Autowired
+    public ReceiveDataController(ReceiveDataService receiveDataService) {
+        this.receiveDataService = receiveDataService;
+    }
+
+
+
+
     @ResponseBody
     @PostMapping("/receivedata")
     public String getData(@RequestBody Alldata alldata) {
-        System.out.println(alldata.toString());
+        receiveDataService.receiveData(alldata);
         return "ok";
     }
 }
