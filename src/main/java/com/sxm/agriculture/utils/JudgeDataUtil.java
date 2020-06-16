@@ -18,6 +18,6 @@ public class JudgeDataUtil {
      * @return 合法 true  不合法 false
      */
     public static Boolean isLegal(String s) {
-        return s.startsWith("FFAA") && s.endsWith("0000EEBB") && s.length() == 68;
+        return s.startsWith("FFAA") && s.endsWith("EEBB") && s.length() == 64;
     }
 }
