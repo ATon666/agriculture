@@ -15,5 +15,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface Soil1Mapper {
     @Insert("insert into location_1_soil(location,monitor,temperature,humidity,ec,ph) values(#{location},#{monitor},#{temperature},#{humidity},#{ec},#{ph})")
-    public int insertSoil(Soil soil);
+    public int insertSoilData(Soil soil);
 }

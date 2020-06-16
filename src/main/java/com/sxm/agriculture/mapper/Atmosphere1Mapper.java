@@ -1,5 +1,7 @@
 package com.sxm.agriculture.mapper;
 
+import com.sxm.agriculture.entity.Atmosphere;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -11,4 +13,9 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface Atmosphere1Mapper {
+
+    @Insert("insert into location_1_atmosphere(location,monitor,temperature,humidity,atmospheric_pressure,co2,windvelocity,winddirection,light) " +
+            "values(#{location},#{monitor},#{temperature},#{humidity},#{atmosphericPressure},#{co2},#{windVelocity},#{windDirection},#{light})")
+    public int insertAtmosphereData(Atmosphere atmosphere);
+
 }
