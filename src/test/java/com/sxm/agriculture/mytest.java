@@ -58,4 +58,13 @@ public class mytest {
 
     }
 
+    @Test
+    public void test5() {
+      /*  String s = "FFFF";
+        Integer integer = Integer.valueOf(s, 16);
+        int a = integer - 0xFF9a;
+        System.out.println(a);*/
+        System.out.println((float) (1-Integer.valueOf("FFFF", 16)) / 10);
+    }
+
 }

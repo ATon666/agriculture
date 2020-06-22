@@ -1,5 +1,7 @@
 package com.sxm.agriculture.utils;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * @author 780013490@qq.com  孙小明
  * @version 1.0
@@ -19,5 +21,20 @@ public class JudgeDataUtil {
      */
     public static Boolean isLegal(String s) {
         return s.startsWith("FFAA") && s.endsWith("EEBB") && s.length() == 64;
+    }
+
+    /**
+     * 判断温度的正负  第一个是F则为负
+     *
+     * @param s 分割之后的十六进制字符串
+     * @return float 类型的温度
+     */
+    public static float getTemperature(@NotNull String s) {
+        if (s.startsWith("F") | s.startsWith("f")) {
+            return (float) (0xFFFF - Integer.valueOf(s, 16)) / 10;
+
+        } else {
+            return (float) Integer.valueOf(s, 16) / 10;
+        }
     }
 }

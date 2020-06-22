@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.sxm.agriculture.entity.Alldata;
 import com.sxm.agriculture.entity.Atmosphere;
 import com.sxm.agriculture.entity.Soil;
+import com.sxm.agriculture.utils.JudgeDataUtil;
 
 /**
  * @author 780013490@qq.com  孙小明
@@ -38,7 +39,10 @@ public class DataHexToJson {
         atmosphere.setLocation(location);
         atmosphere.setMonitor(monitor);
         atmosphere.setHumidity((float) Integer.valueOf(dateStr[2], 16) / 10);
-        atmosphere.setTemperature((float) Integer.valueOf(dateStr[3], 16) / 10);
+
+//        atmosphere.setTemperature((float) Integer.valueOf(dateStr[3], 16) / 10);
+        atmosphere.setTemperature(JudgeDataUtil.getTemperature(dateStr[3]));
+
         atmosphere.setLight(Integer.valueOf(dateStr[4], 16));
         atmosphere.setCo2(Integer.valueOf(dateStr[5], 16));
         atmosphere.setAtmosphericPressure((float) Integer.valueOf(dateStr[6], 16) / 10);
@@ -60,7 +64,10 @@ public class DataHexToJson {
         soil.setLocation(location);
         soil.setMonitor(monitor);
         soil.setHumidity((float) Integer.valueOf(dateStr[9], 16) / 10);
-        soil.setTemperature((float) Integer.valueOf(dateStr[10], 16) / 10);
+
+//        soil.setTemperature((float) Integer.valueOf(dateStr[10], 16) / 10);
+        soil.setTemperature(JudgeDataUtil.getTemperature(dateStr[10]));
+
         soil.setPh((float) Integer.valueOf(dateStr[11], 16) / 10);
         soil.setEc(Integer.valueOf(dateStr[12], 16));
 
