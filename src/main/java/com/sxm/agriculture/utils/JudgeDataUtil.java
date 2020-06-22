@@ -27,11 +27,11 @@ public class JudgeDataUtil {
      * 判断温度的正负  第一个是F则为负
      *
      * @param s 分割之后的十六进制字符串
-     * @return float 类型的温度
+     * @return float 类型的负数温度
      */
     public static float getTemperature(@NotNull String s) {
         if (s.startsWith("F") | s.startsWith("f")) {
-            return (float) (0xFFFF - Integer.valueOf(s, 16)) / 10;
+            return (float) ( Integer.valueOf(s, 16)- 0xFFFF) / 10;
 
         } else {
             return (float) Integer.valueOf(s, 16) / 10;
