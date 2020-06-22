@@ -11,5 +11,7 @@ import org.springframework.stereotype.Service;
  */
 
 public interface ReceiveDataService {
+
     void storeData(Alldata alldata);
+
 }

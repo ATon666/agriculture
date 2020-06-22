@@ -25,9 +25,6 @@ public class ReceiveDataController {
         this.receiveDataService = receiveDataService;
     }
 
-
-
-
     @ResponseBody
     @PostMapping("/receivedata")
     public String storeData(@RequestBody Alldata alldata) {

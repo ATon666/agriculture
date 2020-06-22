@@ -23,7 +23,6 @@ public class ReceiveDataImpl implements ReceiveDataService {
     Atmosphere2Mapper atmosphere2Mapper;
     Atmosphere3Mapper atmosphere3Mapper;
 
-
     @Autowired(required = false)
     public ReceiveDataImpl(Soil1Mapper soil1Mapper, Soil2Mapper soil2Mapper, Soil3Mapper soil3Mapper, Atmosphere1Mapper atmosphere1Mapper, Atmosphere2Mapper atmosphere2Mapper, Atmosphere3Mapper atmosphere3Mapper) {
         this.soil1Mapper = soil1Mapper;
@@ -33,7 +32,6 @@ public class ReceiveDataImpl implements ReceiveDataService {
         this.atmosphere2Mapper = atmosphere2Mapper;
         this.atmosphere3Mapper = atmosphere3Mapper;
     }
-
 
     @Override
     public void storeData(Alldata alldata) {
@@ -54,7 +52,5 @@ public class ReceiveDataImpl implements ReceiveDataService {
             default:
                 break;
         }
-
-
     }
 }
