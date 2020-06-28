@@ -48,10 +48,12 @@ public class UdpReceiver {
         }
         arr = packet.getData();
         len = packet.getLength();
-        s = new String(arr, 0, len);
-        System.out.println("原始数据:" + s);
-        if (JudgeDataUtil.isLegal(s)) {
-            return s;
+
+//        s = new String(arr, 0, len);
+        s = JudgeDataUtil.bytesToHexString(arr, len);
+        System.out.println("原始数据:" + this.s);
+        if (JudgeDataUtil.isLegal(this.s)) {
+            return this.s;
         } else {
             return null;
         }

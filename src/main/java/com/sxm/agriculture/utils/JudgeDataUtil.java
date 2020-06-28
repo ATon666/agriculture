@@ -37,4 +37,16 @@ public class JudgeDataUtil {
             return (float) Integer.valueOf(s, 16) / 10;
         }
     }
+
+    public static String bytesToHexString(byte[] bytes,int length) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            String hex = Integer.toHexString(0xFF & bytes[i]);
+            if (hex.length() == 1) {
+                sb.append('0');
+            }
+            sb.append(hex);
+        }
+        return sb.toString();
+    }
 }
