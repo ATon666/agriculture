@@ -29,3 +29,6 @@ build/
 
 ### VS Code ###
 .vscode/
+out/
+sql/
+src/META/META-INF/MANIFEST.MF
