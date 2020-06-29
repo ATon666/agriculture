@@ -41,7 +41,6 @@ public class UdpReceiver {
 
     public String getDataHex() {
         try {
-
             socket.receive(packet);
         } catch (IOException e) {
             e.printStackTrace();

@@ -19,8 +19,6 @@ public class SendData {
     private final String urlHead;
     String body;
     private DataHexToJson dataHexToJson;
-    private Request request;
-    private RequestBody requestBody;
     private String url;
     private final OkHttpClient okHttpClient;
     private ParsieData parsieData;
@@ -40,24 +38,23 @@ public class SendData {
         parsieData = new ParsieData(s);
         dataHexToJson = new DataHexToJson(parsieData.spliteDataHex());
         body = dataHexToJson.getJson();
-        requestBody = RequestBody.Companion.create(body, mediaType);
+        RequestBody requestBody = RequestBody.Companion.create(body, mediaType);
 
-        request = new Request.Builder()
+        Request request = new Request.Builder()
                 .url(url)
                 .post(requestBody)
                 .build();
 
         okHttpClient.newCall(request).enqueue(new Callback() {
+
             @Override
-            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
 
             }
 
             @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-              /*  ResponseBody body = response.body();
-                assert body != null;
-                System.out.println(body.string());*/
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+
             }
         });
 

@@ -42,13 +42,5 @@ public class ReceiveDataController {
         return "OK";
     }
 
-    @ResponseBody
-    @GetMapping("/submit")
-    public String login(
-            @RequestParam(value = "username") String username,
-            @RequestParam(value = "username") String password) {
-        System.out.println(username);
-        System.out.println(password);
-        return "OK";
-    }
+
 }
