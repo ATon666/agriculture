@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<!DOCTYPE html >
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>清爽简洁的登录页面_dowebok</title>
+    <title>登录</title>
 
+    <script src="js/vue.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -70,6 +71,7 @@
             cursor: pointer;
             background-color: #fff;
         }
+
 
         #username {
             background: url(images/emil.png) 20px 14px no-repeat;
@@ -167,17 +169,19 @@
 <body>
 <div class="dowebok">
     <div class="logo"></div>
-    <div class="form-item">
-        <input id="username" type="text" autocomplete="off" placeholder="用户名">
-        <p class="tip">请输入合法的邮箱地址</p>
-    </div>
-    <div class="form-item">
-        <input id="password" type="password" autocomplete="off" placeholder="密码">
-        <p class="tip">邮箱或密码不正确</p>
-    </div>
-    <div class="form-item">
-        <button id="submit" onclick="submit1()">登 录</button>
-    </div>
+    <form th:action="@{/submit}" method="get">
+        <div class="form-item">
+            <input type="text" name="username" placeholder="用户名">
+
+        </div>
+        <div class="form-item">
+            <input type="password" name="password" placeholder="密码">
+            <!--        <p id="success" v-if="ok">用户名和密码不正确</p>-->
+        </div>
+        <div class="form-item">
+            <button type="submit" >登 录</button>
+        </div>
+    </form>
 
     <!-- <div class="reg-bar">
          <a class="reg" href="http://www.dowebok.com" target="_blank">立即注册</a>
@@ -187,22 +191,16 @@
 <script src="js/login.js"></script>
 <script src="js/axios.min.js"></script>
 <script>
-    var URLBase = 'http://localhost:18080/submit?';
-
-    /* $(function () {
-         $('input').val('')
-         $('#submit').on('click', function () {
-             $('.tip').show()
-         })
-     })*/
 
     function submit1() {
 
         var username = document.getElementById('username').value;
         var password = document.getElementById('password').value;
         console.log(username);
-        axios
-            .get(URLBase + 'username=' + username + '&password=' + password);
+        console.log(password);
+        /* axios
+             .get(URLBase + 'username=' + username + '&password=' + password);
+             */
 
     }
 
