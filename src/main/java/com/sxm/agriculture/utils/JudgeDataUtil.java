@@ -20,7 +20,7 @@ public class JudgeDataUtil {
      * @return 合法 true  不合法 false
      */
     public static Boolean isLegal(String s) {
-        return s.startsWith("FFAA") && s.endsWith("EEBB") && s.length() == 64;
+        return (s.startsWith("ffaa") || s.startsWith("FFAA")) && (s.endsWith("eebb") || s.endsWith("EEBB")) && s.length() == 64;
     }
 
     /**
@@ -31,21 +31,17 @@ public class JudgeDataUtil {
      */
     public static float getTemperature(@NotNull String s) {
         if (s.startsWith("F") | s.startsWith("f")) {
-            return (float) ( Integer.valueOf(s, 16)- 0xFFFF) / 10;
+            return (float) (Integer.valueOf(s, 16) - 0xFFFF) / 10;
 
         } else {
             return (float) Integer.valueOf(s, 16) / 10;
         }
     }
 
-    public static String bytesToHexString(byte[] bytes,int length) {
+    public static String bytesToHex(byte[] bytes, int length) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < length; i++) {
-            String hex = Integer.toHexString(0xFF & bytes[i]);
-            if (hex.length() == 1) {
-                sb.append('0');
-            }
-            sb.append(hex);
+            sb.append(String.format("%02x", bytes[i]));
         }
         return sb.toString();
     }
